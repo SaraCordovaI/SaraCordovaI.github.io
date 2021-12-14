@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    string u,u2,s,a,p;
+    //u string variable
+    //s is scheme string variable
+    //a is an authority string variable
+    //p is path string variable
+    
+    int urlLength, index, index2;
+    
+    
+  
+    cout << "Please enter a URL: ";
+    getline(cin,u);
+
+    index = u.find(":",0) + 1;//find where ':' is located assuming it is always in the beginning
+    s = u.substr(0,index);
+    cout << "scheme = "<< s << "\n"; 
+
+
+    u.erase(0,index);// removes "https:"
+    //cout<< u << endl; to test if the u was altered correctly
+    
+  //Authority
+
+    index = u.find("//",0); // finding where "//" is located in the new string
+    index2 = u.find("/", index+2); // finding where the path starts by locating the first '/' after "//"
+    //cout << index2<< endl; // test to output the index of index 2 or '/'
+    a = u.substr(index,index2);
+    cout << "authority = " << a << "\n";
+
+  //Path
+
+    u.erase(index,index2); // path the "rest of the code"
+    cout << "path = " << u;
+  
+    return 0;
+
+  
+}
